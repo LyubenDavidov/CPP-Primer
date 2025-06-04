@@ -1,2 +1,2 @@
-# Perl
-Contains simple scripts from tutorials and exercises to help learn the Perl programming language.
+# C++ Primer
+Contains simple scripts from tutorials and exercises to help learn the C++ programming language.
