@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = bookstore
-SRC = bookstore.cpp
+TARGET = add_numbers
+SRC = add_numbers.cpp
 
 # Default rule
 all: $(TARGET)
