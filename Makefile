@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = multiply_numbers
-SRC = multiply_numbers.cpp
+TARGET = sum_integers
+SRC = sum_integers.cpp
 
 # Default rule
 all: $(TARGET)
