@@ -23,4 +23,4 @@ int main()
         std::cout << currVal << " occurs " << cnt << " times" << std::endl;
     }
     return 0;
-} // added comment 
+} // other comment
