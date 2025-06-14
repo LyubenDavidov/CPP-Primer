@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = counter
-SRC = counter.cpp
+TARGET = read_write_sales_items
+SRC = read_write_sales_items.cpp
 
 # Default rule
 all: $(TARGET)
