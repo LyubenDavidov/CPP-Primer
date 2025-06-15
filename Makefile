@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = transactions
-SRC = transactions.cpp
+TARGET = variables
+SRC = variables.cpp
 
 # Default rule
 all: $(TARGET)
