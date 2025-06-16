@@ -5,5 +5,9 @@ int main() {
 
     // print Hi MOM! with literals in decimal/octal/hexadecimal
     std::cout << "Hi \x4dO\115!\n" << std::endl;
+
+    // specifying type of a literal
+    std::cout << L'a' << std::endl;
+
     return 0;
 }
