@@ -1,6 +1,11 @@
 // SCRIPT TO SHOW LITERALS AND INITIALIZATION
 #include <iostream>
 
+// default initialization: global variables
+std::string global_string;
+int global_int;
+
+
 int main() {
 
     // print Hi MOM! with literals in decimal/octal/hexadecimal
@@ -22,6 +27,15 @@ int main() {
     std::cout << b << std::endl;
     std::cout << c << std::endl;
     std::cout << d << std::endl;
+
+    // default initialization: local variables
+    std::string local_string;
+    int local_int;
+
+    std::cout << "Default value global string: " << global_string << std::endl;
+    std::cout << "Default value local string: " << local_string << std::endl;
+    std::cout << "Default value global integer: " << global_int << std::endl;
+    std::cout << "Default value local integer: " << local_int << std::endl;
 
     return 0;
 }
