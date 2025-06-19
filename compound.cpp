@@ -20,6 +20,10 @@ int main() {
      std::cout << "Value is: " << refval << std::endl;
      std::cout << "Address is: " << &refval << std::endl;
 
+    // add pointer
+     int *pval = &val;
+
+
 
     return 0;
 }
