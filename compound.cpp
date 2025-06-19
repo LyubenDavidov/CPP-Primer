@@ -11,10 +11,14 @@ int main() {
     /*
      * A reference is not an object
      * It is an alias (a different)
-     * name for the same object.*
+     * name for the same object.
+     * Printing &refval gives the 
+     * address. Printing refval gives
+     * the object (value).
      */
 
-     std::cout << &refval << std::endl;
+     std::cout << "Value is: " << refval << std::endl;
+     std::cout << "Address is: " << &refval << std::endl;
 
 
     return 0;
