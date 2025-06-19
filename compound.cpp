@@ -17,11 +17,14 @@ int main() {
      * the object (value).
      */
 
-     std::cout << "Value is: " << refval << std::endl;
-     std::cout << "Address is: " << &refval << std::endl;
+    std::cout << "Value is: " << refval << std::endl;
+    std::cout << "Address is: " << &refval << std::endl;
 
-    // add pointer
-     int *pval = &val;
+    // pointer to val, pointer contains the address 
+    int *pval = &val;
+    std::cout << "Value is: " << *pval << std::endl;
+    std::cout << "Address is: " << pval << std::endl;
+     
 
 
 
