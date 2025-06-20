@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = compound
-SRC = compound.cpp
+TARGET = pointer
+SRC = pointer.cpp
 
 # Default rule
 all: $(TARGET)
