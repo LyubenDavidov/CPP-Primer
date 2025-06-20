@@ -9,8 +9,8 @@ int main() {
     int *pval = &val;
 
     // print address and value
-    std::cout << "Value is: " << pval << std::endl;
-    std::cout << "Address is: " << *pval << std::endl;
+    std::cout << "Value is: " << *pval << std::endl;    // star: dereferencing operator
+    std::cout << "Address is: " << pval << std::endl;   // no star: address
 
     return 0;
 }
