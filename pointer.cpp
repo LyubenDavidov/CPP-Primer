@@ -32,7 +32,10 @@ int main() {
     std::cout << "Address the pointer points to now is: " << pval << std::endl; 
 
     // void pointers
-    double val2 = 3.14;
+    void *vpval = &val1;
+
+    // print address and value
+    std::cout << "Address the void pointer points to is: " << vpval << std::endl; 
 
 
     return 0;
