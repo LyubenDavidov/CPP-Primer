@@ -31,5 +31,9 @@ int main() {
     std::cout << "Value the pointer points to now is: " << *pval << std::endl;
     std::cout << "Address the pointer points to now is: " << pval << std::endl; 
 
+    // void pointers
+    double val2 = 3.14;
+
+
     return 0;
 }
