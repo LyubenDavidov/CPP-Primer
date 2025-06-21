@@ -55,6 +55,12 @@ int main() {
     // print address 
     std::cout << "Address the pointer containing the address to pval is: " << ppval << std::endl; 
 
+    // first level of derefencing
+    std::cout << "First level of dereferencing of ppval: " << *ppval << std::endl;
+
+    // second level of derefencing
+    std::cout << "Second level of dereferencing of ppval (original object): " << **ppval << std::endl;
+
 
 
 
