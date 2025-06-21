@@ -34,8 +34,25 @@ int main() {
     // void pointers
     void *vpval = &val1;
 
-    // print address and value
+    // print address 
     std::cout << "Address the void pointer points to is: " << vpval << std::endl; 
+
+    /*
+     * We can define pointer to a pointer.
+     * A pointer contains the address of a
+     * variable and points to it. A pointer
+     * is a memory object therefore it too
+     * has an address that we can store in 
+     * a pointer and point to. The double 
+     * star (**) notation is purely decora
+     * tive and serves to distinguish the 
+     * different levels of the pointers.
+     */
+
+    // pointer to a pointer
+    int **ppval = &pval;
+
+
 
 
     return 0;
