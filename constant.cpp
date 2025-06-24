@@ -20,7 +20,7 @@ int main() {
     const double *const pip = &pi;
 
     // print pi address
-    std::cout << pip << std::endl;
+    std::cout << pip << std::endl; // neither the value of pi or the address can be changed
 
     return 0;
 }
