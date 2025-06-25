@@ -25,7 +25,23 @@ int main() {
     // calculate the revenue based on sold units/price
     data1.revenue = data1.units_sold * price;
 
+    if (data0.bookNo == data1.bookNo){
+        unsigned totalCnt = data0.units_sold + data1.units_sold;
+        double totalRevenue = data0.revenue + data1.revenue;
 
-    
-    return 0;
+        // print: ISBN, total sold, total revenue, average price per book
+        std::cout << data0.bookNo << " " << totalCnt << " " << totalRevenue << " ";
+        
+        if (totalCnt != 0){
+            std::cout << totalRevenue/totalCnt << std::endl;
+        }
+        else {
+            std::cout << "(no sales)" << std::endl;
+        }
+        return 0;
+    } 
+    else {
+        std::cerr << "Data must refer to the same ISBN" << std::endl;
+        return -1;
+    }
 }
