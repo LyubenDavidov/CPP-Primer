@@ -6,6 +6,10 @@ struct Sales_data {
     double revenue = 0.0;
 };
 
+struct Foo {
+    std::string something;
+};
+
 int main() {
     return 0;
 }

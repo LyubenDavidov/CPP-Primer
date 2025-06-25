@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = constant
-SRC = constant.cpp
+TARGET = struct
+SRC = struct.cpp
 
 # Default rule
 all: $(TARGET)
