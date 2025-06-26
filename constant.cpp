@@ -35,6 +35,14 @@ int main() {
     std::cout << *p2my_wage << std::endl;
 
 
+    // example direct initialization and copy initialization
+    std::string str0 = "hiya"; // copy initialization
+    std::string str1 ("hiya"); // direct initialization
+
+    // print them
+    std::cout << "Copy initialization: " << str0 << std::endl;
+    std::cout << "Direct initialization: " << str1 << std::endl;
+
     return 0;
 }
 
