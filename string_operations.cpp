@@ -14,7 +14,9 @@ int main() {
     // this will print the entire string line until newline or end-of-script
     string line;
     while (getline(cin, line)) {
-        cout << line << endl;
+        if (!line.empty()) {        // if line is not empty we get print
+            cout << line << endl;
+        }
     }
     return 0;
 }
