@@ -35,6 +35,27 @@ int main() {
     for (auto val : ivec2){
         std::cout << val << std::endl;
     }
+    
+    // fill empty vector with elements
+    vector<int> ivec3;
+    for (int i = 0; i != 100; i++){
+        ivec3.push_back(i);             // append sequential integers to ivec3
+    }
+
+    // short script to order grades in a distribution
+    vector<unsigned> scores (11,0); // 11 buckets
+    unsigned grade;
+    while (std::cin >> grade){
+        if (grade<=100){        // only valid grades accepted
+            ++scores[grade/10]; // increment the counter for the current cluster 
+        }
+    }
+
+    // print grade distribution
+    for (decltype(scores.size()) i = 0; i<scores.size(); i++){
+        std::cout << scores[i] << " ";
+    }
+    std::cout << " " << std::endl;
 
     return 0;
 }
