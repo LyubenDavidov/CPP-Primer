@@ -22,5 +22,10 @@ int main(){
         cout << i << " ";
     }
     cout << endl;
+
+
+    // define fixed array size
+    constexpr size_t array_size = 10; // constexpr: variable is evaluated at compile time, not runtime, size_t: unsigned int type used to define array/buffer sizes
+    unsigned values[array_size];
     return 0;
 }
