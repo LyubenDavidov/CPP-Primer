@@ -32,5 +32,25 @@ int main(){
     string nums[] = {"one", "two", "three", "four"};
     string *p0 = &nums[0];
     ++p0;   // p0 now points to nums[1]
+
+    // functions to find begin and end of an array
+    string *beg     = begin(nums);
+    string *last    = end(nums);
+
+    // use array to initialize a vector
+    int int_arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    vector<int> ivec(begin(int_arr) , end(int_arr));
+
+    // multidimensional arrays
+    int ia0[3][4];          // 3 rows, 4 columns
+    int ia1[10][20][30];    // 3d array
+
+    // initializing elements of multidimensional array
+    int ia2[3][4] = {
+        {0, 3, 2, 6},   // row 1
+        {8, 4, 9, 11},  // row 2
+        {21, 8, 6, 3}   // row 3
+    };
+
     return 0;
 }
