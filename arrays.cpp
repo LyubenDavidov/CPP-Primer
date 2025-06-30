@@ -52,5 +52,12 @@ int main(){
         {21, 8, 6, 3}   // row 3
     };
 
+    // print ia2
+    for (auto p = ia2; p != ia2 + 3; ++p){
+        for (auto q = *p; q != *p + 4; ++q){
+            cout << *q << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }
