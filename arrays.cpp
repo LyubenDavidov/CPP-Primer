@@ -18,9 +18,9 @@ int main(){
     }
 
     // print grade distribution
-    for (unsigned i = 0; i<11; i++){
-        std::cout << scores[i] << " ";
+    for (auto i : scores){
+        cout << i << " ";
     }
-    std::cout << " " << std::endl;
+    cout << endl;
     return 0;
 }
