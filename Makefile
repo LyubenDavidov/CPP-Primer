@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = binary_search
-SRC = binary_search.cpp
+TARGET = arrays
+SRC = arrays.cpp
 
 # Default rule
 all: $(TARGET)
