@@ -9,5 +9,15 @@ int main(){
 
     // example operator precedence 
     cout << ((val < 10) ? "below 10" : "over 10") << endl; 
+
+
+    // bitwise operator
+    unsigned char bits = 0233;  // 0233 is an octal literal
+
+    // bits promoted to int and shifted left by 8 bits
+    int shifted_bits = bits << 31;
+
+    // print the new integer value
+    cout << shifted_bits << endl;
     return 0;
 }
