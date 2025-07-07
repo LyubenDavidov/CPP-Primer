@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = arrays
-SRC = arrays.cpp
+TARGET = operators
+SRC = operators.cpp
 
 # Default rule
 all: $(TARGET)
