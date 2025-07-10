@@ -29,5 +29,24 @@ int main(){
     constexpr size_t szSalesData = sizeof(Sales_data);
     cout << szSalesData << endl;
 
+    /*
+     * print the sizeof all the built-in types
+     */
+
+    // sizeof integer
+    int ValInt;
+    size_t szValInt = sizeof(ValInt);
+
+    // sizeof float
+    float ValFl;
+    size_t szValFl = sizeof(ValFl);
+
+    // sizeof double
+    double ValDbl;
+    size_t szValDbl = sizeof(ValDbl);
+
+    // print sizes
+    cout << szValInt << "\n" << szValFl << "\n" << szValDbl << endl;
+
     return 0;
 }
