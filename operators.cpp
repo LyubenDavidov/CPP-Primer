@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "Sales_data.h"
 using namespace std;
 
 int main(){
@@ -19,5 +20,14 @@ int main(){
 
     // print the new integer value
     cout << shifted_bits << endl;
+
+    // the sizeof operator (int is 4 bytes = 32 bits)
+    constexpr size_t sz = sizeof(shifted_bits);
+    cout << sz << endl;
+
+    // the sizeof a class
+    constexpr size_t szSalesData = sizeof(Sales_data);
+    cout << szSalesData << endl;
+
     return 0;
 }
