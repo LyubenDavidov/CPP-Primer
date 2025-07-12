@@ -4,7 +4,7 @@ using namespace std;
 
 int main(){
     // vowel counter
-    unsigned aCnt = 0, eCnt = 0, iCnt = 0, uCnt = 0, oCnt = 0;
+    unsigned aCnt = 0, eCnt = 0, iCnt = 0, uCnt = 0, oCnt = 0, otherCnt = 0;
     char ch;
 
     while (cin >> ch){
@@ -28,6 +28,10 @@ int main(){
             case 'o':
                 ++oCnt;
                 break;
+
+            default:
+                ++otherCnt;
+                break;
         }
     }
 
@@ -35,6 +39,7 @@ int main(){
          << "Number of vowel e: \t" << eCnt << "\n"
          << "Number of vowel i: \t" << iCnt << "\n"
          << "Number of vowel o: \t" << oCnt << "\n"
-         << "Number of vowel u: \t" << uCnt << endl;
+         << "Number of vowel u: \t" << uCnt << "\n"
+         << "Number of other characters: \t" << otherCnt << endl;
     return 0;
 }
