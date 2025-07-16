@@ -43,6 +43,8 @@ int main(){
          << "Number of other characters: \t" << otherCnt << endl;
 
     */
+
+    // small change
     vector<int> v;
     int i;
     while (cin >> i){
