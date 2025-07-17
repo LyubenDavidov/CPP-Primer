@@ -42,7 +42,7 @@ int main(){
          << "Number of vowel u: \t" << uCnt << "\n"
          << "Number of other characters: \t" << otherCnt << endl;
 
-    */
+    
 
     // small change
     vector<int> v;
@@ -60,5 +60,16 @@ int main(){
         cout << "All elements in v are greater than or equal to 0" << endl;
     else
         cout << "You have negative elements" << endl;
+
+    */
+    string rsp;
+    do {
+        cout << "enter two numbers: " << endl;
+        int a = 0, b = 0;
+        cin >> a >> b;
+        cout << "sum of " << a << " and " << b << " is " << a+b << endl;
+        cout << "more? enter yes or no" << endl;
+        cin >> rsp;
+    } while (!rsp.empty() && rsp[0] != 'n');
     return 0;
 }
