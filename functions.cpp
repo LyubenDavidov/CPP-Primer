@@ -13,5 +13,8 @@ int factorial(int val){
 int main(){
     int number = 8;
     cout << factorial(number) << endl;
+
+    cout << "It also works with convertable types: " << endl;
+    cout << factorial(3.14) << endl;
     return 0;
 }
