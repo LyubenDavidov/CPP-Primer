@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = exception_handling
-SRC = exception_handling.cpp
+TARGET = functions
+SRC = functions.cpp
 
 # Default rule
 all: $(TARGET)
