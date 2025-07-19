@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
 TARGET = functions
-SRC = functions.cpp
+SRC = functions.cpp factorial.cpp
 
 # Default rule
 all: $(TARGET)
