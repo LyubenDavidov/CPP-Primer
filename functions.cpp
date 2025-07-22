@@ -20,3 +20,5 @@ int main(){
     cout << "\'f\' has been found " << ocr << " times" << endl;
     return 0;
 }
+
+// I changed a little thing
