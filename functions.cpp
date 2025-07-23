@@ -5,6 +5,13 @@
 using namespace std;
 
 
+// array parsing
+void print(const int *beg, const int *end){
+    while (beg != end){
+        cout << *beg++ << endl;
+    }
+}
+
 int main(){
     int number = 8;
     cout << factorial(number) << endl;
