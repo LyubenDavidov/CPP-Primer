@@ -21,6 +21,6 @@ int main(){
     return 0;
 }
 
-// I changed a little thing
+// Removed small contribution
 // Added another line
 // Now another
