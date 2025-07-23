@@ -25,9 +25,9 @@ int main(){
     string::size_type ocr = 0;
     cout << "The position of \'f\' is: " << find_char(s, 'f', ocr) << endl;
     cout << "\'f\' has been found " << ocr << " times" << endl;
+
+    // showcase array parsing
+    int my_array[5] = {3, 2, 5, 6, 1};
+    print(begin(my_array), end(my_array));
     return 0;
 }
-
-// Removed small contribution
-// Added another contribution
-// Now another
