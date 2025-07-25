@@ -35,5 +35,10 @@ int main(){
     // showcase array parsing
     int my_array[5] = {3, 2, 5, 6, 1};
     print(begin(my_array), end(my_array));
+
+    // showcase shorter string function
+    string str1 = "This is my long sentence";
+    string str2 = "Short sentence";
+    cout << shorterString(str1, str2) << endl;
     return 0;
 }
