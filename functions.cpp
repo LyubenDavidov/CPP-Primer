@@ -12,11 +12,19 @@ void print(const int *beg, const int *end){
     }
 }
 
+
+
+/*
+ * Explanation: Instead of returning a copy of the shorter string,
+ * this function returns a reference to the original string passed
+ * in (s1 or s2). The shorter string is not copied.
+ */
+
 // return shorter string
 const string &shorterString(const string &s1, const string &s2){
     return s1.size() <= s2.size() ? s1 : s2;
-
 }
+
 
 int main(){
     int number = 8;
