@@ -12,6 +12,12 @@ void print(const int *beg, const int *end){
     }
 }
 
+// return shorter string
+const string &shorterString(const string &s1, const string &s2){
+    return s1.size() <= s2.size() ? s1 : s2;
+
+}
+
 int main(){
     int number = 8;
     cout << factorial(number) << endl;
@@ -31,4 +37,3 @@ int main(){
     print(begin(my_array), end(my_array));
     return 0;
 }
-// small comment
