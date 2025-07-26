@@ -2,6 +2,7 @@
 #include <vector>
 #include "factorial.hpp"
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 
