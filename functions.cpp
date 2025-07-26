@@ -49,5 +49,5 @@ int main(){
     string str1 = "This is my long sentence";
     string str2 = "Short sentence";
     cout << shorterString(str1, str2) << endl;
-    return 0;
+    return EXIT_SUCCESS;
 }
