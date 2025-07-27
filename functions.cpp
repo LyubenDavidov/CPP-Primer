@@ -51,4 +51,5 @@ int main(){
     cout << shorterString(str1, str2) << endl;
     return EXIT_SUCCESS;
     // small change
+    // small change
 }
