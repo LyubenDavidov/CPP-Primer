@@ -50,6 +50,4 @@ int main(){
     string str2 = "Short sentence";
     cout << shorterString(str1, str2) << endl;
     return EXIT_SUCCESS;
-    // small change
-    // small change
 }
