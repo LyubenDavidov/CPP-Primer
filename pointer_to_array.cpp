@@ -26,12 +26,29 @@ arrT* func(int i){
 }
  */
 
+// another option using decltype
+int odd[]  = {1, 3, 5, 7};
+int even[] = {0, 2, 4, 6};
+decltype(odd) *arrPtr(int i)
+{
+    // returns a pointer to the array
+    return (i % 2) ? &odd : &even;
+}
+
+
 int main(){
-    arrT* p = func(1);
+    arrT* p0 = func(1);
     for (int i = 0; i < 10; i++)
     {
         // prints the contents of the selected array
-        cout << (*p)[i] << endl;
+        cout << (*p0)[i] << endl;
+    }
+
+    auto p1 = arrPtr(2);
+    for (int i = 0; i < 4; i++)
+    {
+        // prints the contents of the selected array
+        cout << (*p1)[i] << endl;
     }
     return 0;
 }
