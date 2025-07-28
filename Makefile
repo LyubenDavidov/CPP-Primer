@@ -3,8 +3,8 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -std=c++17
 
 # Target and sources
-TARGET = functions
-SRC = functions.cpp factorial.cpp
+TARGET = pointer_to_array
+SRC = pointer_to_array.cpp #factorial.cpp
 
 # Default rule
 all: $(TARGET)
