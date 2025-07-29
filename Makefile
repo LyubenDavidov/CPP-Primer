@@ -1,16 +1,17 @@
 # Compiler and flags
 CXX = g++
-CXXFLAGS = -Wall -Wextra -std=c++17
+CXXFLAGS = -Wall -Wextra -std=c++17 -I/opt/homebrew/include
+LDFLAGS = -L/opt/homebrew/lib -lglfw -framework OpenGL
 
 # Target and sources
-TARGET = pointer_to_array
-SRC = pointer_to_array.cpp #factorial.cpp
+TARGET = opengl_test
+SRC = opengl_test.cpp #factorial.cpp
 
 # Default rule
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
 # Clean rule to delete compiled files
 clean:
