@@ -8,8 +8,8 @@ CXXFLAGS = -Wall -Wextra -std=c++17 -I/opt/homebrew/include
 LDFLAGS = -L/opt/homebrew/lib -lglfw -framework OpenGL
 
 # Target and sources
-TARGET = opengl_test
-SRC = opengl_test.cpp #factorial.cpp
+TARGET = functions
+SRC = functions.cpp factorial.cpp
 
 # Default rule
 all: $(TARGET)

@@ -27,6 +27,11 @@ const string &shorterString(const string &s1, const string &s2){
 }
 
 
+// inline function
+inline const string &inlshorterString(const string &s1, const string &s2){
+    return s1.size() <= s2.size() ? s1 : s2;
+}
+
 int main(){
     int number = 8;
     cout << factorial(number) << endl;
@@ -48,6 +53,6 @@ int main(){
     // showcase shorter string function
     string str1 = "This is my long sentence";
     string str2 = "Short sentence";
-    cout << shorterString(str1, str2) << endl;
+    cout << inlshorterString(str1, str2) << endl;
     return EXIT_SUCCESS;
 }
