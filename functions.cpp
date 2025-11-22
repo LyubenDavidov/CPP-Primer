@@ -56,3 +56,6 @@ int main(){
     cout << inlshorterString(str1, str2) << endl;
     return EXIT_SUCCESS;
 }
+
+// I left at chapter 6 inline functions
+// Need to continue and refresh
