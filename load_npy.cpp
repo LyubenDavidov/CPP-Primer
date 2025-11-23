@@ -1,7 +1,7 @@
 /**
  * This is a short script showing how to load 
  * npy files using the xtensor library. The 
- * .npy files are loaded as xtensor arrays. 
+ * .npy file is loaded as xtensor array. 
  */
 
 
@@ -26,36 +26,22 @@ int main(int argc, char* argv[]) {
     }
     std::string const npy_file_path{argv[1]};
 
-    // ----- load the 4D array from the npy file -----
+    // ----- load the 1D array from the npy file -----
     xt::xarray<double> const double_array{xt::load_npy<double>(npy_file_path)};
 
     // ----- get the shape of the array -----
     auto const& shape = double_array.shape();
 
+    // ----- check that it is 1D array -----
     if (shape.size() != 1)
     {
         std::cerr << "Expected a 1D array, got: " << shape.size() << "D.\n";
         return 1;
     }
 
+    // ----- check length of the array -----
     std::size_t const N = shape[0];
     std::cout << "Loaded 1D array with " << N << " elements.\n\n";
-    // ----- access the elements of the array using a pointer -----
-    // double const* const ptr{double_array.data()};
-    // for (size_t i{0}; i<double_array.size(); ++i)
-    // {
-    //     assert(ptr[i] == static_cast<float>(i));
-    // }
 
-    // bool data_type_mismatch{false};
-    // try
-    // {
-    //     xt::xarray<int> const int_array{xt::load_npy<int>(npy_file_path)};
-    // }
-    // catch (std::runtime_error const& e)
-    // {
-    //     data_type_mismatch = true;
-    // }
-    // assert(data_type_mismatch);
     return 0;
 }

@@ -23,25 +23,32 @@
 # 	rm -f $(TARGET)
 
 CXX       := clang++
-# xtensor 0.27.x officially wants C++20, so:
-CXXFLAGS  := -std=c++20 -O2
 
-TARGET    := load_npy
-SRCS      := load_npy.cpp
-OBJS      := $(SRCS:.cpp=.o)
+# ---------- ROOT (strip any -std=...) ----------
+ROOTCFLAGS_RAW := $(shell root-config --cflags)
+ROOTCFLAGS     := $(shell printf '%s\n' "$(ROOTCFLAGS_RAW)" | sed -E 's/-std=[^ ]+//g')
+ROOTLIBS       := $(shell root-config --libs)
 
-# Homebrew global include path (xtensor & xtl headers are under /opt/homebrew/include)
+# ---------- xtensor (Homebrew global include path) ----------
 INCLUDES  := -I/opt/homebrew/include
+
+# ---------- common flags ----------
+CXXSTD    := -std=c++20        # xtensor 0.27.x likes C++20
+CXXWARN   := -O2 -Wall -Wextra
+
+CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
+
+TARGET    := pv_lstsq
+SRCS      := pv_lstsq.cpp
+OBJS      := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ $^
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(ROOTLIBS)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) $(INCLUDES) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
-
-
