@@ -38,8 +38,10 @@ CXXWARN   := -O2 -Wall -Wextra
 
 CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
 
-TARGET    := pv_lstsq
-SRCS      := pv_lstsq.cpp
+TARGET    := pv_fitres
+
+# ---- add amzi_fit.cpp here ----
+SRCS      := pv_fitres.cpp amzi_fit.cpp
 OBJS      := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
