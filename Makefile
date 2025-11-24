@@ -29,11 +29,11 @@ ROOTCFLAGS_RAW := $(shell root-config --cflags)
 ROOTCFLAGS     := $(shell printf '%s\n' "$(ROOTCFLAGS_RAW)" | sed -E 's/-std=[^ ]+//g')
 ROOTLIBS       := $(shell root-config --libs)
 
-# ---------- xtensor (Homebrew global include path) ----------
-INCLUDES  := -I/opt/homebrew/include
+# ---------- xtensor + Eigen ----------
+INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
 
 # ---------- common flags ----------
-CXXSTD    := -std=c++20        # xtensor 0.27.x likes C++20
+CXXSTD    := -std=c++20
 CXXWARN   := -O2 -Wall -Wextra
 
 CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
