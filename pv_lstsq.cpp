@@ -1,6 +1,8 @@
 /**
- * This script loads the .npy voltage vs power sweeps
- * and plots them.
+ * This script loads the .npy voltage vs power sweeps,
+ * does least squares fitting of the mathematical model
+ * on the experimental data, and plots the fit model on
+ * top of the measurement graph.
  */
 
 
@@ -35,7 +37,7 @@
 
 
 
-// Generic functor base (from Eigen docs)
+// ----- generic functor base (from Eigen docs) -----
 template<typename _Scalar, int NX = Eigen::Dynamic, int NY = Eigen::Dynamic>
 struct Functor {
     using Scalar = _Scalar;
@@ -61,18 +63,18 @@ struct Functor {
 
 
 
-// Our AMZI fitting functor (residuals only; Jacobian via NumericalDiff)
+// ----- AMZI fitting functor (residuals only; Jacobian via NumericalDiff) -----
 struct AMZIFunctor : Functor<double> {
     const Eigen::VectorXd& V;  // voltages
-    const Eigen::VectorXd& P;  // measured powers
+    const Eigen::VectorXd& P;  // measured optical powers
 
     AMZIFunctor(const Eigen::VectorXd& V_in, const Eigen::VectorXd& P_in)
-        : Functor<double>(5, static_cast<int>(V_in.size()))  // 5 parameters
+        : Functor<double>(7, static_cast<int>(V_in.size()))  // 7 parameters
         , V(V_in)
         , P(P_in)
     {}
 
-    // x = [P0, C, phi0, Vpi]
+    // ----- the interference mathematical model -----
     int operator()(const Eigen::VectorXd &x, Eigen::VectorXd &fvec) const {
         double P0       = x[0];
         double C        = x[1];
@@ -99,8 +101,10 @@ struct AMZIFunctor : Functor<double> {
 
 int main(int argc, char** argv) {
 
+    // ----- for ROOT -----
     TApplication app("app", &argc, argv);
 
+    // ----- set .npy file path -----
     std::string const npy_file_path{"PV_arm1_pm_power_cwvl1553.5nm.npy"};
 
 
@@ -132,14 +136,17 @@ int main(int argc, char** argv) {
         vdPwr[i] = adPwr(i);      // measured power
     }
 
+    // ----- convert dBm to mW -----
     std::vector<double> vdPwr_lin(N);
     for (int i = 0; i < N; ++i) {
-        vdPwr_lin[i] = std::pow(10.0, vdPwr[i] / 10.0);  // assuming vdPwr is in dBm
+        vdPwr_lin[i] = std::pow(10.0, vdPwr[i] / 10.0);  // [mW]
     }
 
-    // Suppose you have std::vector<double> volt, power;
+    // ----- convert std::vector<double> volt, power; to Eigen vectors -----
     Eigen::VectorXd V = Eigen::Map<Eigen::VectorXd>(vdVltg.data(), vdVltg.size());
     Eigen::VectorXd P = Eigen::Map<Eigen::VectorXd>(vdPwr_lin.data(), vdPwr_lin.size());
+
+
 
     /*
      * =========================================
@@ -149,14 +156,14 @@ int main(int argc, char** argv) {
 
 
     
-    // ----- 2) Set up functor -----
+    // ----- set up functor -----
     AMZIFunctor functor(V, P);
     Eigen::NumericalDiff<AMZIFunctor> numDiff(functor);
     Eigen::LevenbergMarquardt<Eigen::NumericalDiff<AMZIFunctor>, double> lm(numDiff);
 
 
 
-    // ----- 3) Initial guess for parameters -----
+    // ----- initial guess for parameters -----
     Eigen::VectorXd x(7);
     x[0] = 0.03;            // P0 guess
     x[1] = 0.42;            // C guess
@@ -166,12 +173,15 @@ int main(int argc, char** argv) {
     x[5] = 0.0002;          // beta guess
     x[6] = -0.02;           // gamma guess
 
+    // ----- minimization parameters -----
     lm.parameters.maxfev = 200;   // max function evaluations
     lm.parameters.ftol   = 1e-8;  // tolerance on function
     lm.parameters.xtol   = 1e-8;  // tolerance on x
 
+    // ----- minimize -----
     auto status = lm.minimize(x);
 
+    // ----- print the fit parameters -----
     std::cout << "LM status: " << int(status) << "\n";
     std::cout << "Fitted parameters:\n";
     std::cout << "P0   = "      << x[0] << "\n";
@@ -182,7 +192,7 @@ int main(int argc, char** argv) {
     std::cout << "beta = "      << x[5] << "\n";
     std::cout << "gamma = "     << x[6] << "\n";
 
-    // You can now evaluate the fitted model at any V:
+    // ----- evaluate the model at -5V -----
     double V_test = -5.0;
     double P_fit  = x[0] * (1 + x[4] * V_test + x[5] * pow(V_test, 2)) * (1.0 + x[1] * std::cos(x[2] + M_PI * V_test / x[3] + x[6] * pow(V_test,2)));
     std::cout << "Model at V = " << V_test << " V: P = " << P_fit << "\n";
@@ -190,10 +200,10 @@ int main(int argc, char** argv) {
 
     // ----- create data from model -----
     std::vector<double> vdPwrM(N);
-
     for (std::size_t i = 0; i < N; ++i)
     {
-        vdPwrM[i] = x[0] * (1 + x[4] * vdVltg[i] + x[5] * pow(vdVltg[i],2)) * (1.0 + x[1] * std::cos(x[2] + M_PI * vdVltg[i] / x[3] + x[6] * pow(vdVltg[i],2)));
+        vdPwrM[i] = x[0] * (1 + x[4] * vdVltg[i] + x[5] * pow(vdVltg[i],2)) 
+                         * (1.0 + x[1] * std::cos(x[2] + M_PI * vdVltg[i] / x[3] + x[6] * pow(vdVltg[i],2)));
     }
 
     
@@ -232,24 +242,23 @@ int main(int argc, char** argv) {
     g_model->SetLineWidth(2);
     g_model->SetMarkerStyle(24);     // optional: hollow marker
     g_model->SetMarkerColor(kRed);
-    // Draw on top of existing axes
+
+    // ----- draw on top of existing axes -----
     g_model->Draw("LP SAME");        // L = line, P = points
 
 
-    // ----------------------------------------------------------
-    // OPTIONAL: Add a legend
-    // ----------------------------------------------------------
+
+    // ----- add legend -----
     auto legend = new TLegend(0.15, 0.75, 0.45, 0.88);
-    // x1=0.80, x2=0.97 → pushed almost fully to the right
 
     legend->AddEntry(g_data,  "Measured Data", "p");
     legend->AddEntry(g_model, "Model Fit",     "l");
 
-    // Make legend visually clean
-    legend->SetFillStyle(0);     // transparent background
-    legend->SetBorderSize(0);    // no border
+    // ----- clean legend -----
+    legend->SetFillStyle(0);        // transparent background
+    legend->SetBorderSize(0);       // no border
 
-    // Increase text and symbol size
+    // ----- increase text and symbol size -----
     legend->SetTextSize(0.030);     // default is ~0.025
 
     legend->Draw();
