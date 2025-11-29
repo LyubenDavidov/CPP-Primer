@@ -1,27 +1,3 @@
-# # Compiler and flags
-# CXX = g++
-
-# # Usual: remove -I/opt...
-# CXXFLAGS = -Wall -Wextra -std=c++17 -I/opt/homebrew/include
-
-# # Usual: remove LDFLAGS
-# LDFLAGS = -L/opt/homebrew/lib -lglfw -framework OpenGL
-
-# # Target and sources
-# TARGET = functions
-# SRC = functions.cpp factorial.cpp
-
-# # Default rule
-# all: $(TARGET)
-
-# # Usual: remove $(LDFLAGS)
-# $(TARGET): $(SRC)
-# 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
-
-# # Clean rule to delete compiled files
-# clean:
-# 	rm -f $(TARGET)
-
 CXX       := clang++
 
 # ---------- ROOT (strip any -std=...) ----------
@@ -32,22 +8,26 @@ ROOTLIBS       := $(shell root-config --libs)
 # ---------- xtensor + Eigen ----------
 INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
 
+# ---------- matplot++ ----------
+MATPLOT_INCLUDE := -I/opt/homebrew/Cellar/matplotplusplus/1.2.2/include
+MATPLOT_LIB     := -L/opt/homebrew/lib -lmatplot  # <-- Use the correct path to the lib
+
 # ---------- common flags ----------
 CXXSTD    := -std=c++20
 CXXWARN   := -O2 -Wall -Wextra
 
-CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
+CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES) $(MATPLOT_INCLUDE)
 
-TARGET    := pv_fitres
+TARGET    := matplotpp-example
 
 # ---- add amzi_fit.cpp here ----
-SRCS      := pv_fitres.cpp amzi_fit.cpp
+SRCS      := matplotpp-example.cpp
 OBJS      := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(ROOTLIBS)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(ROOTLIBS) $(MATPLOT_LIB)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
