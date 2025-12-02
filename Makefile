@@ -18,10 +18,10 @@ CXXWARN   := -O2 -Wall -Wextra
 
 CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES) $(MATPLOT_INCLUDE)
 
-TARGET    := matplotpp-example
+TARGET    := arm_rev_map
 
 # ---- add amzi_fit.cpp here ----
-SRCS      := matplotpp-example.cpp
+SRCS      := arm_rev_map.cpp
 OBJS      := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
