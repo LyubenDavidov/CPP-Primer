@@ -8,29 +8,55 @@ ROOTLIBS       := $(shell root-config --libs)
 # ---------- xtensor + Eigen ----------
 INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
 
-# ---------- matplot++ ----------
-MATPLOT_INCLUDE := -I/opt/homebrew/Cellar/matplotplusplus/1.2.2/include
-MATPLOT_LIB     := -L/opt/homebrew/lib -lmatplot  # <-- Use the correct path to the lib
-
 # ---------- common flags ----------
 CXXSTD    := -std=c++20
 CXXWARN   := -O2 -Wall -Wextra
 
-CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES) $(MATPLOT_INCLUDE)
+CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
 
-TARGET    := arm_rev_map
+TARGET    := functions
 
 # ---- add amzi_fit.cpp here ----
-SRCS      := arm_rev_map.cpp
+SRCS      := functions.cpp factorial.cpp
 OBJS      := $(SRCS:.cpp=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CXX) $(CXXFLAGS) -o $@ $^ $(ROOTLIBS) $(MATPLOT_LIB)
+	$(CXX) $(CXXFLAGS) -o $@ $^ $(ROOTLIBS)
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+
+
+
+
+
+
+# # Compiler and flags
+# CXX = g++
+
+# # Usual: remove -I/opt...
+# CXXFLAGS = -Wall -Wextra -std=c++17 -I/opt/homebrew/include
+
+# # Usual: remove LDFLAGS
+# LDFLAGS = -L/opt/homebrew/lib -lglfw -framework OpenGL
+
+# # Target and sources
+# TARGET = functions
+# SRC = functions.cpp factorial.cpp
+
+# # Default rule
+# all: $(TARGET)
+
+# # Usual: remove $(LDFLAGS)
+# $(TARGET): $(SRC)
+# 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
+
+# # Clean rule to delete compiled files
+# clean:
+# 	rm -f $(TARGET)
