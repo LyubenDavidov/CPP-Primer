@@ -32,6 +32,19 @@ inline const string &inlshorterString(const string &s1, const string &s2){
     return s1.size() <= s2.size() ? s1 : s2;
 }
 
+// ----- example overloaded function -----
+int add_num(int a, int b){
+    int res = a + b;
+    return res;
+}
+
+
+int add_num(int a, int b, int c){
+    int res = a + b + c;
+    return res;
+}
+
+
 int main(){
     int number = 8;
     cout << factorial(number) << endl;
@@ -54,6 +67,16 @@ int main(){
     string str1 = "This is my long sentence";
     string str2 = "Short sentence";
     cout << inlshorterString(str1, str2) << endl;
+
+
+    int int01 = 3;
+    int int02 = 2;
+    int int03 = 7;
+    
+    std::cout << "Adding two numbers: " << add_num(int01, int02) << std::endl;
+    std::cout << "Adding three numbers: " << add_num(int01, int02, int03) << std::endl;
+
+
     return EXIT_SUCCESS;
 }
 
