@@ -21,13 +21,13 @@ void print(const int *beg, const int *end){
  * in (s1 or s2). The shorter string is not copied.
  */
 
-// return shorter string
+// ----- return shorter string -----
 const string &shorterString(const string &s1, const string &s2){
     return s1.size() <= s2.size() ? s1 : s2;
 }
 
 
-// inline function
+// ----- example inline function -----
 inline const string &inlshorterString(const string &s1, const string &s2){
     return s1.size() <= s2.size() ? s1 : s2;
 }
@@ -44,6 +44,9 @@ int add_num(int a, int b, int c){
     return res;
 }
 
+
+// ----- example constant expression function -----
+constexpr int new_sz() {return 42;}     // return type and parameter type must be literals
 
 int main(){
     int number = 8;
@@ -76,9 +79,5 @@ int main(){
     std::cout << "Adding two numbers: " << add_num(int01, int02) << std::endl;
     std::cout << "Adding three numbers: " << add_num(int01, int02, int03) << std::endl;
 
-
     return EXIT_SUCCESS;
 }
-
-// I left at chapter 6 inline functions
-// Need to continue and refresh
