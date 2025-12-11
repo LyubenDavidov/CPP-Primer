@@ -12,7 +12,9 @@ INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
 CXXSTD    := -std=c++20
 CXXWARN   := -O2 -Wall -Wextra
 
+# ----- defining NDEBUG with -DNDEBUG in the CXXFLAGS causes all asserts to be disabled -----
 CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
+
 
 TARGET    := functions
 

@@ -3,6 +3,7 @@
 #include "factorial.hpp"
 #include <string>
 #include <cstdlib>
+#include <cassert>
 using namespace std;
 
 
@@ -78,6 +79,22 @@ int main(){
     
     std::cout << "Adding two numbers: " << add_num(int01, int02) << std::endl;
     std::cout << "Adding three numbers: " << add_num(int01, int02, int03) << std::endl;
+
+    // ----- example assert statement -----
+    // ----- triggers if NDEBUG is undefined -----
+    string word                 = "elephant";
+    string::size_type threshold = 30;
+    assert(word.size() > threshold);
+
+    // ----- example debugging without NDEBUG -----
+    if (word.size() < threshold) {
+    std::cerr << "Error: " << __FILE__
+              << "\n\tFunction: " << __func__
+              << "\n\tLine: " << __LINE__
+              << "\n\tCompiled on: " << __DATE__ << " at " << __TIME__
+              << "\n\tWord read was: \"" << word << "\""
+              << "\n\tReason: Length too short (threshold = " << threshold << ")\n";
+}
 
     return EXIT_SUCCESS;
 }
