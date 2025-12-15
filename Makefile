@@ -1,21 +1,19 @@
-CXX       := clang++
+CXX       := g++#clang++
 
-# ---------- ROOT (strip any -std=...) ----------
-ROOTCFLAGS_RAW := $(shell root-config --cflags)
-ROOTCFLAGS     := $(shell printf '%s\n' "$(ROOTCFLAGS_RAW)" | sed -E 's/-std=[^ ]+//g')
-ROOTLIBS       := $(shell root-config --libs)
+# # ---------- ROOT (strip any -std=...) ----------
+# ROOTCFLAGS_RAW := $(shell root-config --cflags)
+# ROOTCFLAGS     := $(shell printf '%s\n' "$(ROOTCFLAGS_RAW)" | sed -E 's/-std=[^ ]+//g')
+# ROOTLIBS       := $(shell root-config --libs)
 
-# --- small test ---
-
-# ---------- xtensor + Eigen ----------
-INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
+# # ---------- xtensor + Eigen ----------
+# INCLUDES  := -I/opt/homebrew/include -I/opt/homebrew/include/eigen3
 
 # ---------- common flags ----------
 CXXSTD    := -std=c++20
 CXXWARN   := -O2 -Wall -Wextra
 
 # ----- defining NDEBUG with -DNDEBUG in the CXXFLAGS causes all asserts to be disabled -----
-CXXFLAGS  := $(CXXSTD) $(CXXWARN) $(ROOTCFLAGS) $(INCLUDES)
+CXXFLAGS  := $(CXXSTD) $(CXXWARN) #$(ROOTCFLAGS) $(INCLUDES)
 
 
 TARGET    := functions
